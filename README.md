@@ -6,7 +6,7 @@ Solução em C# dos desafios do [LeetCode](https://leetcode.com/problemset/).
 
 Pasta com os algoritmos de solução e testes.
 
-.NET 9 + MSTEst
+.NET 9 + MSTest
 
 ### LeetCode
 
