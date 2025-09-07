@@ -19,7 +19,10 @@ public class cs_1_3443 : Ics3443
     /// <returns></returns>
     public int MaxDistance(string s, int k)
     {
-        var xy = new int[2, 4];
+        if (string.IsNullOrEmpty(s))
+            return 0;
+
+        var xy = new int[4];
 
         foreach (var _ in s)
         {
@@ -27,26 +30,54 @@ public class cs_1_3443 : Ics3443
             switch (_)
             {
                 case 'N':
-                    xy[0, 0]++;
+                    xy[0]++;
                     break;
                 case 'S':
-                    xy[0, 1]++;
+                    xy[1]++;
                     break;
                 case 'E':
-                    xy[1, 2]++;
+                    xy[2]++;
                     break;
                 case 'W':
-                    xy[1, 3]++;
+                    xy[3]++;
                     break;
             }
         }
 
         // faz k aumentos de direção para aumentar o xy[i] maior e decrementar o xy[i] menor
-        for (int axis = 0; axis < 2; axis++)
+        while (k > 0)
         {
-            
+            var xy_mm = new int?[4];
+
+            for (int i = 0; i < xy.Length; i++)
+            {
+                if (xy[i] > 0 && (xy[i] > xy_mm[0] || !xy_mm[0].HasValue))
+                {
+                    xy_mm[0] = xy[i];
+                    xy_mm[1] = i;
+                }
+
+                if (xy[i] > 0 && (xy[i] < xy_mm[2] || !xy_mm[2].HasValue))
+                {
+                    xy_mm[2] = xy[i];
+                    xy_mm[3] = i;
+                }
+            }
+
+            if (xy_mm[0].HasValue && xy_mm[0] > 0
+                && xy_mm[2].HasValue && xy_mm[2] > 0)
+            {
+                xy[xy_mm[1].Value]++;
+                xy[xy_mm[3].Value]--;
+
+                k--;
+            }
+            else
+            {
+                break;
+            }
         }
 
-
+        return Math.Abs(xy[0] - xy[1]) + Math.Abs(xy[2] - xy[3]);
     }
 }
