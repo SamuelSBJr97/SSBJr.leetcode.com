@@ -54,7 +54,7 @@ public class cs_1_3443 : Ics3443
         {
             int dx = Math.Abs(x - xy.x);
             int dy = Math.Abs(y - xy.y);
-            return (int)Math.Sqrt(dx * dx + dy * dy);
+            return dx + dy;
         }
     }
 
@@ -104,26 +104,23 @@ public class cs_1_3443 : Ics3443
 
                 for (int i = 0; i < 4; i++)
                 {
-                    for (int j = 0; j < 2; j++)
-                    {
-                        if ((_m[0, 0] > m[i, 0]
+                    if ((_m[0, 0] > m[i, 0]
                         || !_m[0, 0].HasValue)
                         && m[i, 0] > 0
                         )
-                        {
-                            _m[0, 0] = m[i, 0];
-                            _m[0, 1] = m[i, j];
-                        }
+                    {
+                        _m[0, 0] = m[i, 0];
+                        _m[0, 1] = m[i, 1];
+                    }
 
-                        if ((_m[1, 0] < m[i, 0]
-                        || !_m[1, 0].HasValue
-                        || _m[1, 1] == _m[0, 1])
-                        && m[i, 0] > 0
-                        )
-                        {
-                            _m[1, 0] = m[i, 0];
-                            _m[1, 1] = m[i, j];
-                        }
+                    if ((_m[1, 0] < m[i, 0]
+                    || !_m[1, 0].HasValue
+                    || _m[1, 1] == _m[0, 1])
+                    && m[i, 0] > 0
+                    )
+                    {
+                        _m[1, 0] = m[i, 0];
+                        _m[1, 1] = m[i, 1];
                     }
                 }
 
