@@ -87,23 +87,24 @@ public class cs_1_3443 : Ics3443
 
         var xy_d = new int?[2];
 
-        for (int i = 0; i < xy.Length / 2; i++)
+        for (int i = 0; i < xy.Length; i++)
         {
-            if (xy[i] > xy_d[0]
+            var d = Math.Abs(xy[i] - xy[i + 1]);
+
+            if (d > xy_d[0]
                 || !xy_d[0].HasValue
             )
             {
-                xy_d[0] = xy[i];
+                xy_d[0] = d;
             }
-        }
 
-        for (int i = xy.Length / 2; i < xy.Length; i++)
-        {
-            if (xy[i] > xy_d[1]
+            d = Math.Abs(xy[i] - xy[i + 1]);
+
+            if (d > xy_d[1]
                 || !xy_d[1].HasValue
             )
             {
-                xy_d[1] = xy[i];
+                xy_d[1] = d;
             }
         }
 
