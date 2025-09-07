@@ -87,26 +87,9 @@ public class cs_1_3443 : Ics3443
 
         var xy_d = new int?[2];
 
-        for (int i = 0; i < xy.Length; i++)
-        {
-            var d = Math.Abs(xy[i] - xy[i + 1]);
+        xy_d[0] = Math.Abs(xy[0] - xy[1]);
 
-            if (d > xy_d[0]
-                || !xy_d[0].HasValue
-            )
-            {
-                xy_d[0] = d;
-            }
-
-            d = Math.Abs(xy[i] - xy[i + 1]);
-
-            if (d > xy_d[1]
-                || !xy_d[1].HasValue
-            )
-            {
-                xy_d[1] = d;
-            }
-        }
+        xy_d[1] = Math.Abs(xy[2] - xy[3]);
 
         return xy_d[0].Value + xy_d[1].Value;
     }
