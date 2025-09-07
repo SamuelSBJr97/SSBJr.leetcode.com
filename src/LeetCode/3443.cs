@@ -75,27 +75,27 @@ public class cs_1_3443 : Ics3443
         {
             while (k > 0)
             {
-                var m = new int[4, 1 + s.Length];
+                var m = new int[4, 2];
 
-                for (int i = 0; i < s.Length; i++)
+                for (int i = 0; i < _s.Length; i++)
                 {
-                    switch (s[i])
+                    switch (_s[i])
                     {
                         case 'N':
                             m[0, 0]++;
-                            m[0, i] = i;
+                            m[0, 1] = i;
                             break;
                         case 'S':
                             m[1, 0]++;
-                            m[1, i] = i;
+                            m[1, 1] = i;
                             break;
                         case 'E':
                             m[2, 0]++;
-                            m[2, i] = i;
+                            m[2, 1] = i;
                             break;
                         case 'W':
                             m[3, 0]++;
-                            m[3, i] = i;
+                            m[3, 1] = i;
                             break;
                     }
                 }
@@ -104,19 +104,21 @@ public class cs_1_3443 : Ics3443
 
                 for (int i = 0; i < 4; i++)
                 {
-                    for (int j = 1; j < 1 + s.Length; j++)
+                    for (int j = 0; j < 2; j++)
                     {
-                        if (_m[0, 0] > m[i, 0]
-                        || !_m[0, 0].HasValue
+                        if ((_m[0, 0] > m[i, 0]
+                        || !_m[0, 0].HasValue)
+                        && m[i, 0] > 0
                         )
                         {
                             _m[0, 0] = m[i, 0];
                             _m[0, 1] = m[i, j];
                         }
 
-                        if (_m[1, 0] < m[i, 0]
+                        if ((_m[1, 0] < m[i, 0]
                         || !_m[1, 0].HasValue
-                        || _m[1, 1] == _m[0, 1]
+                        || _m[1, 1] == _m[0, 1])
+                        && m[i, 0] > 0
                         )
                         {
                             _m[1, 0] = m[i, 0];
@@ -125,30 +127,18 @@ public class cs_1_3443 : Ics3443
                     }
                 }
 
-                for (int i = 0; i < 2; i++)
+                if (_m[0, 1] > 0
+                    && _m[1, 1] > 0
+                    && _m[0, 1] != _m[1, 1]
+                )
                 {
-                    if (_m[i, 0] > 0)
-                    {
-                        var p = _m[i, 1].Value;
+                    var p = _m[1, 1].Value;
 
-                        switch (s[p])
-                        {
-                            case 'N':
-                                _s[p] = 'S';
-                                break;
-                            case 'S':
-                                _s[p] = 'N';
-                                break;
-                            case 'E':
-                                _s[p] = 'W';
-                                break;
-                            case 'W':
-                                _s[p] = 'O';
-                                break;
-                        }
-
-                        break;
-                    }
+                    _s[p] = _s[_m[0, 1].Value];
+                }
+                else
+                {
+                    break;
                 }
 
                 k--;
