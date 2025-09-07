@@ -11,6 +11,53 @@ public interface Ics3443
 
 public class cs_1_3443 : Ics3443
 {
+    struct XY
+    {
+        int x = 0;
+        int y = 0;
+
+        public int mxd { get; private set; } = 0;
+
+        public XY(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+
+        public void Mover(char c)
+        {
+            var xy = new XY(x, y);
+
+            switch (c)
+            {
+                case 'N':
+                    y++;
+                    break;
+                case 'S':
+                    y--;
+                    break;
+                case 'E':
+                    x++;
+                    break;
+                case 'W':
+                    x--;
+                    break;
+            }
+
+            var d = xy.Distancia(this);
+
+            if (mxd < d)
+                mxd = d;
+        }
+
+        public int Distancia(XY xy)
+        {
+            int dx = Math.Abs(x - xy.x);
+            int dy = Math.Abs(y - xy.y);
+            return (int)Math.Sqrt(dx * dx + dy * dy);
+        }
+    }
+
     /// <summary>
     /// MaxDistance possível considerando k mudanças de direção em s
     /// </summary>
@@ -22,75 +69,94 @@ public class cs_1_3443 : Ics3443
         if (string.IsNullOrEmpty(s))
             return 0;
 
-        var xy = new int[4];
+        var _s = s.ToCharArray();
 
-        foreach (var _ in s)
+        if (k > 0)
         {
-            // switch para incrementar o xy com base em N, S, E, W
-            switch (_)
+            while (k > 0)
             {
-                case 'N':
-                    xy[0]++;
-                    break;
-                case 'S':
-                    xy[1]++;
-                    break;
-                case 'E':
-                    xy[2]++;
-                    break;
-                case 'W':
-                    xy[3]++;
-                    break;
-            }
-        }
+                var m = new int[4, 1 + s.Length];
 
-        // faz k aumentos de direção para aumentar o xy[i] maior e decrementar o xy[i] menor
-        while (k > 0)
-        {
-            var xy_mm = new int?[4];
-
-            for (int i = 0; i < xy.Length; i++)
-            {
-                if (xy[i] > 0
-                && (xy[i] > xy_mm[0]
-                    || !xy_mm[0].HasValue)
-                )
+                for (int i = 0; i < s.Length; i++)
                 {
-                    xy_mm[0] = xy[i];
-                    xy_mm[1] = i;
+                    switch (s[i])
+                    {
+                        case 'N':
+                            m[0, 0]++;
+                            m[0, i] = i;
+                            break;
+                        case 'S':
+                            m[1, 0]++;
+                            m[1, i] = i;
+                            break;
+                        case 'E':
+                            m[2, 0]++;
+                            m[2, i] = i;
+                            break;
+                        case 'W':
+                            m[3, 0]++;
+                            m[3, i] = i;
+                            break;
+                    }
                 }
 
-                if (xy[i] > 0
-                && (xy[i] < xy_mm[2]
-                    || !xy_mm[2].HasValue
-                    || xy_mm[1] == xy_mm[3])
-                )
-                {
-                    xy_mm[2] = xy[i];
-                    xy_mm[3] = i;
-                }
-            }
+                var _m = new int?[2, 2];
 
-            if (xy_mm[0].HasValue && xy_mm[0] > 0
-                && xy_mm[2].HasValue && xy_mm[2] > 0)
-            {
-                xy[xy_mm[1].Value]++;
-                xy[xy_mm[3].Value]--;
+                for (int i = 0; i < m.Length; i++)
+                {
+                    for (int j = 1; j < 1 + s.Length; j++)
+                    {
+                        if (_m[0, 0] > m[i, 0]
+                        || !_m[0, 0].HasValue
+                        )
+                        {
+                            _m[0, 0] = m[i, 0];
+                            _m[0, 1] = m[i, j];
+                        }
+
+                        if (_m[1, 0] < m[i, 0]
+                        || !_m[1, 0].HasValue
+                        || _m[1, 1] == _m[0, 1]
+                        )
+                        {
+                            _m[1, 0] = m[i, 0];
+                            _m[1, 1] = m[i, j];
+                        }
+                    }
+                }
+
+                for (int i = 0; i < _m.Length; i++)
+                {
+                    var p = _m[i, 1].Value;
+
+                    switch (s[p])
+                    {
+                        case 'N':
+                            _s[p] = 'S';
+                            break;
+                        case 'S':
+                            _s[p] = 'N';
+                            break;
+                        case 'E':
+                            _s[p] = 'W';
+                            break;
+                        case 'W':
+                            _s[p] = 'O';
+                            break;
+                    }
+                }
 
                 k--;
             }
-            else
-            {
-                break;
-            }
         }
 
-        var xy_d = new int?[2];
+        var xy = new XY();
 
-        xy_d[0] = Math.Abs(xy[0] - xy[1]);
+        foreach (var _ in _s)
+        {
+            xy.Mover(_);
+        }
 
-        xy_d[1] = Math.Abs(xy[2] - xy[3]);
-
-        return xy_d[0].Value + xy_d[1].Value;
+        return xy.mxd;
     }
 }
