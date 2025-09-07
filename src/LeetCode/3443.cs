@@ -102,7 +102,7 @@ public class cs_1_3443 : Ics3443
 
                 var _m = new int?[2, 2];
 
-                for (int i = 0; i < m.Length; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     for (int j = 1; j < 1 + s.Length; j++)
                     {
@@ -125,24 +125,29 @@ public class cs_1_3443 : Ics3443
                     }
                 }
 
-                for (int i = 0; i < _m.Length; i++)
+                for (int i = 0; i < 2; i++)
                 {
-                    var p = _m[i, 1].Value;
-
-                    switch (s[p])
+                    if (_m[i, 0] > 0)
                     {
-                        case 'N':
-                            _s[p] = 'S';
-                            break;
-                        case 'S':
-                            _s[p] = 'N';
-                            break;
-                        case 'E':
-                            _s[p] = 'W';
-                            break;
-                        case 'W':
-                            _s[p] = 'O';
-                            break;
+                        var p = _m[i, 1].Value;
+
+                        switch (s[p])
+                        {
+                            case 'N':
+                                _s[p] = 'S';
+                                break;
+                            case 'S':
+                                _s[p] = 'N';
+                                break;
+                            case 'E':
+                                _s[p] = 'W';
+                                break;
+                            case 'W':
+                                _s[p] = 'O';
+                                break;
+                        }
+
+                        break;
                     }
                 }
 
