@@ -85,6 +85,28 @@ public class cs_1_3443 : Ics3443
             }
         }
 
-        return Math.Abs(xy[0] - xy[1]) + Math.Abs(xy[2] - xy[3]);
+        var xy_d = new int?[2];
+
+        for (int i = 0; i < xy.Length / 2; i++)
+        {
+            if (xy[i] > xy_d[0]
+                || !xy_d[0].HasValue
+            )
+            {
+                xy_d[0] = xy[i];
+            }
+        }
+
+        for (int i = xy.Length / 2; i < xy.Length; i++)
+        {
+            if (xy[i] > xy_d[1]
+                || !xy_d[1].HasValue
+            )
+            {
+                xy_d[1] = xy[i];
+            }
+        }
+
+        return xy_d[0].Value + xy_d[1].Value;
     }
 }

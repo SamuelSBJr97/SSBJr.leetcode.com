@@ -27,7 +27,7 @@ namespace LeetCode.Test
             {
                 var solution = (Ics3443)Activator.CreateInstance(implType);
                 var result = solution.MaxDistance(directions, start);
-                Assert.AreEqual(expected, result, $"Failed for {implType.Name} with input '{directions}', start {start}");
+                Assert.AreEqual(expected, result, $"Failed for {implType.Name} with input '{directions}', start {start}. Expected {expected} returnded {result}.");
             }
         }
     }
