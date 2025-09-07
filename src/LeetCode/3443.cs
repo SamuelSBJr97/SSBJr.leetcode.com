@@ -51,13 +51,20 @@ public class cs_1_3443 : Ics3443
 
             for (int i = 0; i < xy.Length; i++)
             {
-                if (xy[i] > 0 && (xy[i] > xy_mm[0] || !xy_mm[0].HasValue))
+                if (xy[i] > 0
+                && (xy[i] > xy_mm[0]
+                    || !xy_mm[0].HasValue)
+                )
                 {
                     xy_mm[0] = xy[i];
                     xy_mm[1] = i;
                 }
 
-                if (xy[i] > 0 && (xy[i] < xy_mm[2] || !xy_mm[2].HasValue))
+                if (xy[i] > 0
+                && (xy[i] < xy_mm[2]
+                    || !xy_mm[2].HasValue
+                    || xy_mm[1] == xy_mm[3])
+                )
                 {
                     xy_mm[2] = xy[i];
                     xy_mm[3] = i;

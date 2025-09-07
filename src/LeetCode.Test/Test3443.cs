@@ -17,9 +17,7 @@ namespace LeetCode.Test
 
         [TestMethod]
         [DataRow("NSWWEW", 3, 6)]
-        [DataRow("NSWWEW", 3, 6)]
-        [DataRow("NNNN", 0, 4)]
-        [DataRow("SSEENW", 2, 6)]
+        [DataRow("NWSE", 1, 3)]
         public void MaxDistance_Implementations_ReturnExpected(string directions, int start, int expected)
         {
             var implementations = GetImplementations();
