@@ -124,14 +124,14 @@ public class cs_1_3443 : Ics3443
                     }
                 }
 
-                if (_m[0, 1] > 0
-                    && _m[1, 1] > 0
+                if (_m[0, 0] > 0
+                    && _m[1, 0] > 0
                     && _m[0, 1] != _m[1, 1]
                 )
                 {
-                    var p = _m[1, 1].Value;
+                    var p = _m[0, 1].Value;
 
-                    _s[p] = _s[_m[0, 1].Value];
+                    _s[p] = _s[_m[1, 1].Value];
                 }
                 else
                 {
