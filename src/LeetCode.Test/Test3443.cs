@@ -9,7 +9,7 @@ namespace LeetCode.Test
         public void Test3443_MaxDistance_ReturnsExpected(string directions, int start, int expected)
         {
             // Arrange
-            var solution = new LeetCode.c3443.Solution();
+            var solution = new LeetCode.c3443.c3443();
 
             // Act
             var result = solution.MaxDistance(directions, start);
