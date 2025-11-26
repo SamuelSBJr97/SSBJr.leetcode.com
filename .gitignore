@@ -75,3 +75,5 @@ _ReSharper*/
 *.snupkg
 
 # Entity Framework
+/src/.vs/LeetCode
+/src/.vs
