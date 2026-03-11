@@ -21,6 +21,13 @@ namespace LeetCode.Test
                 new[] { 2 },
                 new[] { 1,2 },
             }, 4 };
+            
+            yield return new object[] { new int[][] {
+                new[] { 1, 2, 3 },
+                new[] { 0 },
+                new[] { 0 },
+                new[] { 0 },
+            }, 4 };
         }
 
         [DataTestMethod]
