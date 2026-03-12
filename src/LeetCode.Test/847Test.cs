@@ -19,7 +19,7 @@ namespace LeetCode.Test
                 new[] { 0, 2, 4 },
                 new[] { 1, 3, 4 },
                 new[] { 2 },
-                new[] { 1,2 },
+                new[] { 1, 2 },
             }, 4 };
             
             yield return new object[] { new int[][] {
