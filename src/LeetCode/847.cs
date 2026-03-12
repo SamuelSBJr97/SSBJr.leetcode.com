@@ -49,11 +49,6 @@ namespace LeetCode.cs847
 
                 for (int l = 0; l < Graph[k].Length; l++)
                 {
-                    if (l == j)
-                    {
-                        continue;
-                    }
-
                     r += rotas(Graph[k][l], l) + 1;
                 }
             }
