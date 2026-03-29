@@ -18,9 +18,14 @@ namespace LeetCode.cs118
             {
                 var row = new List<int>();
 
-                for (int j = 1; j < (i + 1) * 2; j++)
+                for (int j = 0; j <= i; j++)
                 {
-                    row.Add(j);
+                    if (j == 0 || j == i)
+                        row.Add(1);
+                    else
+                    {
+                        row.Add(lst[i - 1][j - 1] + lst[i - 1][j]);
+                    }
                 }
 
                 lst.Add(row);
