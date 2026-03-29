@@ -12,7 +12,21 @@ namespace LeetCode.cs118
     {
         public IList<IList<int>> Generate(int numRows)
         {
+            IList<IList<int>> lst = new List<IList<int>>();
 
+            for (int i = 0; i < numRows; i++)
+            {
+                var row = new List<int>();
+
+                for (int j = 1; j < (i + 1) * 2; j++)
+                {
+                    row.Add(j);
+                }
+
+                lst.Add(row);
+            }
+
+            return lst;
         }
     }
 }

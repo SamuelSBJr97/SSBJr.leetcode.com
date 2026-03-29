@@ -40,7 +40,7 @@ namespace LeetCode.Test
             {
                 var solution = (Ics118)Activator.CreateInstance(implType);
                 var result = solution.Generate(nunRows);
-                Assert.AreEqual(row, result);
+                Assert.AreEqual(row, result.ToArray());
             }
         }
     }
