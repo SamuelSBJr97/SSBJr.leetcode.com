@@ -1,4 +1,4 @@
-namespace LeetCode.cs847
+namespace SSBJr.LeetCode.cs847
 {
     /// <summary>
     /// https://leetcode.com/problems/shortest-path-visiting-all-nodes/description/

@@ -12,6 +12,6 @@ Pasta com os algoritmos de solução e testes.
 
 Algoritmos de solução dos desafios.
 
-### LeetCode.Test
+### SSBJr.LeetCode.Test
 
 Testes nos algoritmos.

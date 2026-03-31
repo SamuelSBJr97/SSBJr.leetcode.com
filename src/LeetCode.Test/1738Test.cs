@@ -1,10 +1,10 @@
-using LeetCode.cs1738;
+using SSBJr.LeetCode.cs1738;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LeetCode.Test
+namespace SSBJr.LeetCode.Test
 {
     [TestClass]
     public class Test1738Test

@@ -1,9 +1,9 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
-using LeetCode.c3443;
+using SSBJr.LeetCode.c3443;
 
-namespace LeetCode.Test
+namespace SSBJr.LeetCode.Test
 {
     [TestClass]
     public class Test3443Test

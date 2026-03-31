@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCode.cs1738
+namespace SSBJr.LeetCode.cs1738
 {
     /// <summary>
     /// https://leetcode.com/problems/find-kth-largest-xor-coordinate-value/description/

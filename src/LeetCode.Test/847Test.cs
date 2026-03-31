@@ -1,6 +1,6 @@
-using LeetCode.cs847;
+using SSBJr.LeetCode.cs847;
 
-namespace LeetCode.Test
+namespace SSBJr.LeetCode.Test
 {
     [TestClass]
     public class Test847Test

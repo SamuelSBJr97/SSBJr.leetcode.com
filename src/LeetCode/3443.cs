@@ -1,4 +1,4 @@
-namespace LeetCode.c3443;
+namespace SSBJr.LeetCode.c3443;
 
 /// <summary>
 /// Maximum Manhattan Distance After K Changes

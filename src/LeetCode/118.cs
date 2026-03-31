@@ -1,4 +1,4 @@
-namespace LeetCode.cs118
+namespace SSBJr.LeetCode.cs118
 {
     /// <summary>
     /// https://leetcode.com/problems/pascals-triangle
