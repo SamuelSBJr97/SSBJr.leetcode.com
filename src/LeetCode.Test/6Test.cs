@@ -17,7 +17,7 @@ namespace SSBJr.LeetCode.Test
         [DynamicData(nameof(Cases), DynamicDataSourceType.Method)]
         public void Convert_Implementations_ReturnExpected(string s, int numRows, string expected)
         {
-            var implementations = GetImplementations();
+            var implementations = GetImplementations<Ics6>();
             Assert.IsTrue(implementations.Length > 0, "No implementations of Ics6 found.");
 
             foreach (var implType in implementations)
